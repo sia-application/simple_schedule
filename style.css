@@ -300,6 +300,14 @@ th {
     transform: scale(1.15) !important;
 }
 
+.status-btn.btn-pending.active {
+    border-color: #ffd700 !important;
+    color: #ffd700 !important;
+    background: rgba(255, 215, 0, 0.1) !important;
+    box-shadow: 0 0 12px rgba(255, 215, 0, 0.3) !important;
+    transform: scale(1.15) !important;
+}
+
 .status-btn.btn-ng.active {
     border-color: #ff4d4d !important;
     color: #ff4d4d !important;

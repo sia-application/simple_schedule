@@ -2,12 +2,12 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebas
 import { getFirestore, doc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
 
 const firebaseConfig = {
-  projectId: "simple-schedule-app-2026",
-  appId: "1:151341499730:web:0a911268a701851acc668b",
-  storageBucket: "simple-schedule-app-2026.firebasestorage.app",
-  apiKey: "AIzaSyA4HBPyqGgFiR_sa7VbsqK_BswLudSML2A",
-  authDomain: "simple-schedule-app-2026.firebaseapp.com",
-  messagingSenderId: "151341499730"
+    projectId: "simple-schedule-app-2026",
+    appId: "1:151341499730:web:0a911268a701851acc668b",
+    storageBucket: "simple-schedule-app-2026.firebasestorage.app",
+    apiKey: "AIzaSyA4HBPyqGgFiR_sa7VbsqK_BswLudSML2A",
+    authDomain: "simple-schedule-app-2026.firebaseapp.com",
+    messagingSenderId: "151341499730"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -16,21 +16,21 @@ const scheduleDocRef = doc(db, 'schedules', 'main');
 
 const scheduleData = [
     { id: 'd1', venue: '東京 国立代々木競技場第一体育館', date: '2026年10月09日(金)', time: 'OPEN17:00 START18:30' },
-    { id: 'd2', venue: '東京 国立代々木競技場第一体育館', date: '2026年10月11日(日)', time: 'OPEN15:30 START17:00' },
-    { id: 'd3', venue: '東京 国立代々木競技場第一体育館', date: '2026年10月12日(月/祝)', time: 'OPEN15:30 START17:00' },
-    { id: 'd4', venue: '福岡 マリンメッセ福岡 A館', date: '2026年10月31日(土)', time: 'OPEN15:30 START17:00' },
-    { id: 'd5', venue: '福岡 マリンメッセ福岡 A館', date: '2026年11月01日(日)', time: 'OPEN15:30 START17:00' },
-    { id: 'd6', venue: '愛知 IGアリーナ', date: '2026年11月21日(土)', time: 'OPEN15:30 START17:00' },
-    { id: 'd7', venue: '愛知 IGアリーナ', date: '2026年11月22日(日)', time: 'OPEN15:30 START17:00' },
-    { id: 'd8', venue: '神奈川 横浜アリーナ', date: '2026年11月28日(土)', time: 'OPEN15:30 START17:00' },
-    { id: 'd9', venue: '神奈川 横浜アリーナ', date: '2026年11月29日(日)', time: 'OPEN15:30 START17:00' },
-    { id: 'd10', venue: '千葉 ららアリーナ 東京ベイ', date: '2026年12月12日(土)', time: 'OPEN15:30 START17:00' },
-    { id: 'd11', venue: '千葉 ららアリーナ 東京ベイ', date: '2026年12月13日(日)', time: 'OPEN15:30 START17:00' },
-    { id: 'd12', venue: '大阪 大阪城ホール', date: '2026年12月16日(水)', time: 'OPEN17:00 START18:30' },
-    { id: 'd13', venue: '大阪 大阪城ホール', date: '2026年12月17日(木)', time: 'OPEN17:00 START18:30' },
+    { id: 'd2', venue: '東京 国立代々木競技場第一体育館', date: '2026年10月11日(日)', time: 'OPEN16:00 START17:00' },
+    { id: 'd3', venue: '東京 国立代々木競技場第一体育館', date: '2026年10月12日(月/祝)', time: 'OPEN15:00 START16:00' },
+    { id: 'd4', venue: '福岡 マリンメッセ福岡 A館', date: '2026年10月31日(土)', time: 'OPEN16:00 START17:00' },
+    { id: 'd5', venue: '福岡 マリンメッセ福岡 A館', date: '2026年11月01日(日)', time: 'OPEN15:00 START16:00' },
+    { id: 'd6', venue: '愛知 IGアリーナ', date: '2026年11月21日(土)', time: 'OPEN16:00 START17:00' },
+    { id: 'd7', venue: '愛知 IGアリーナ', date: '2026年11月22日(日)', time: 'OPEN15:00 START16:00' },
+    { id: 'd8', venue: '神奈川 横浜アリーナ', date: '2026年11月28日(土)', time: 'OPEN16:00 START17:00' },
+    { id: 'd9', venue: '神奈川 横浜アリーナ', date: '2026年11月29日(日)', time: 'OPEN15:00 START16:00' },
+    { id: 'd10', venue: '千葉 ららアリーナ 東京ベイ', date: '2026年12月12日(土)', time: 'OPEN16:00 START17:00' },
+    { id: 'd11', venue: '千葉 ららアリーナ 東京ベイ', date: '2026年12月13日(日)', time: 'OPEN15:00 START16:00' },
+    { id: 'd12', venue: '大阪 大阪城ホール', date: '2026年12月16日(水)', time: 'OPEN17:30 START18:30' },
+    { id: 'd13', venue: '大阪 大阪城ホール', date: '2026年12月17日(木)', time: 'OPEN17:30 START18:30' },
     { id: 'd14', venue: '東京 有明アリーナ', date: '2026年12月24日(木)', time: 'OPEN17:00 START18:30' },
-    { id: 'd15', venue: '東京 有明アリーナ', date: '2026年12月26日(土)', time: 'OPEN15:30 START17:00' },
-    { id: 'd16', venue: '東京 有明アリーナ', date: '2026年12月27日(日)', time: 'OPEN15:30 START17:00' }
+    { id: 'd15', venue: '東京 有明アリーナ', date: '2026年12月26日(土)', time: 'OPEN16:00 START17:00' },
+    { id: 'd16', venue: '東京 有明アリーナ', date: '2026年12月27日(日)', time: 'OPEN15:00 START16:00' }
 ];
 
 let participants = [];
@@ -94,7 +94,7 @@ function renderTable() {
     tableBody.innerHTML = '';
     scheduleData.forEach(schedule => {
         const tr = document.createElement('tr');
-        
+
         const th = document.createElement('th');
         th.className = 'sticky-col';
         th.innerHTML = `
@@ -108,7 +108,7 @@ function renderTable() {
             const td = document.createElement('td');
             td.className = 'check-cell';
             td.setAttribute('data-name', p.name);
-            
+
             let currentStatus = p.attendance[schedule.id];
             if (currentStatus === true) {
                 p.attendance[schedule.id] = 'ok';
@@ -117,20 +117,23 @@ function renderTable() {
                 delete p.attendance[schedule.id];
                 currentStatus = undefined;
             }
-            
+
             td.innerHTML = `
                 <div class="check-status">
                     <button class="status-btn btn-ok ${currentStatus === 'ok' ? 'active' : ''}" title="参加"><i class="far fa-circle"></i></button>
+                    <button class="status-btn btn-pending ${currentStatus === 'pending' ? 'active' : ''}" title="未定"><span style="font-size: 1.1em; line-height: 1;">△</span></button>
                     <button class="status-btn btn-ng ${currentStatus === 'ng' ? 'active' : ''}" title="不参加"><i class="fas fa-times"></i></button>
                 </div>
             `;
-            
+
             const btnOk = td.querySelector('.btn-ok');
+            const btnPending = td.querySelector('.btn-pending');
             const btnNg = td.querySelector('.btn-ng');
-            
+
             btnOk.onclick = (e) => window.setStatus(index, schedule.id, 'ok', e, td);
+            btnPending.onclick = (e) => window.setStatus(index, schedule.id, 'pending', e, td);
             btnNg.onclick = (e) => window.setStatus(index, schedule.id, 'ng', e, td);
-            
+
             tr.appendChild(td);
         });
 
@@ -143,38 +146,41 @@ function addParticipant() {
     if (name) {
         participants.push({
             name: name,
-            attendance: {} 
+            attendance: {}
         });
         newPersonInput.value = '';
         syncToFirestore();
     }
 }
 
-window.removeParticipant = function(index) {
+window.removeParticipant = function (index) {
     if (confirm(`「${participants[index].name}」を削除してもよろしいですか？`)) {
         participants.splice(index, 1);
         syncToFirestore();
     }
 }
 
-window.setStatus = function(participantIndex, scheduleId, status, event, cellElement) {
+window.setStatus = function (participantIndex, scheduleId, status, event, cellElement) {
     if (event) {
         event.stopPropagation();
     }
     const p = participants[participantIndex];
-    
+
     if (p.attendance[scheduleId] === status) {
         delete p.attendance[scheduleId];
     } else {
         p.attendance[scheduleId] = status;
     }
-    
+
     // Optimistic UI update
     const btnOk = cellElement.querySelector('.btn-ok');
+    const btnPending = cellElement.querySelector('.btn-pending');
     const btnNg = cellElement.querySelector('.btn-ng');
     btnOk.classList.remove('active');
+    btnPending.classList.remove('active');
     btnNg.classList.remove('active');
     if (p.attendance[scheduleId] === 'ok') btnOk.classList.add('active');
+    if (p.attendance[scheduleId] === 'pending') btnPending.classList.add('active');
     if (p.attendance[scheduleId] === 'ng') btnNg.classList.add('active');
 
     // Sync state
