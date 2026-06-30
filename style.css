@@ -118,7 +118,8 @@ input[type="text"] {
     padding: 0.5rem 1rem;
     font-size: 1rem;
     outline: none;
-    width: 250px;
+    width: 100%;
+    max-width: 250px;
     font-family: inherit;
 }
 
@@ -139,6 +140,8 @@ button {
     align-items: center;
     gap: 0.5rem;
     font-size: 1rem;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 button:hover {
@@ -249,28 +252,60 @@ th {
     transition: all 0.2s ease;
     font-size: 1.6rem;
     user-select: none;
-    color: transparent; /* hide icon initially */
+    position: relative;
+    min-width: 110px;
 }
 
 .check-cell:hover {
     background-color: var(--hover-color);
 }
 
-.check-cell i {
-    opacity: 0;
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    transform: scale(0.5);
+.check-status {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    min-height: 36px;
 }
 
-.check-cell.checked {
-    color: var(--secondary-color);
-    background-color: rgba(0, 255, 255, 0.05);
+.status-btn {
+    background: transparent !important;
+    color: rgba(255, 255, 255, 0.3) !important;
+    border: 2px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 50% !important;
+    width: 40px !important;
+    height: 40px !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    font-size: 1.2rem !important;
+    cursor: pointer !important;
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    padding: 0 !important;
 }
 
-.check-cell.checked i {
-    opacity: 1;
-    transform: scale(1);
-    text-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+.status-btn:hover {
+    transform: scale(1.1) !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    box-shadow: none !important;
+}
+
+.status-btn.btn-ok.active {
+    border-color: var(--secondary-color) !important;
+    color: var(--secondary-color) !important;
+    background: rgba(0, 255, 255, 0.1) !important;
+    box-shadow: 0 0 12px rgba(0, 255, 255, 0.3) !important;
+    transform: scale(1.15) !important;
+}
+
+.status-btn.btn-ng.active {
+    border-color: #ff4d4d !important;
+    color: #ff4d4d !important;
+    background: rgba(255, 77, 77, 0.1) !important;
+    box-shadow: 0 0 12px rgba(255, 77, 77, 0.3) !important;
+    transform: scale(1.15) !important;
 }
 
 /* Animations */
@@ -320,5 +355,72 @@ th {
     .subtitle { font-size: 1rem; }
     .container { padding: 1.5rem 1rem; }
     .controls { justify-content: center; }
-    .sticky-col { min-width: 250px; }
+    
+    .table-container {
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        backdrop-filter: none;
+        overflow-x: visible;
+        -webkit-backdrop-filter: none;
+    }
+    
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+    
+    thead {
+        display: none;
+    }
+    
+    tr {
+        margin-bottom: 1.5rem;
+        background: var(--surface-color);
+        border: 1px solid var(--surface-border);
+        border-radius: 12px;
+        overflow: hidden;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+    
+    .sticky-col {
+        position: relative;
+        background: rgba(0, 0, 0, 0.4);
+        padding: 1.2rem;
+        border-bottom: 1px solid var(--cell-border);
+        white-space: normal;
+    }
+    
+    .schedule-info-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+    
+    .check-cell {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 1.2rem;
+        border-bottom: 1px solid var(--cell-border);
+        border-right: none;
+        min-height: 60px;
+    }
+    
+    .check-cell:last-child {
+        border-bottom: none;
+    }
+    
+    .check-cell::before {
+        content: attr(data-name);
+        font-weight: 600;
+        color: #e0e0e0;
+        font-size: 1.1rem;
+    }
+    
+    .check-status {
+        width: auto;
+    }
+    
+    /* removed click hint */
 }
