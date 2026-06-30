@@ -1,4 +1,4 @@
-const CACHE_NAME = 'simple-schedule-v3';
+const CACHE_NAME = 'simple-schedule-v4';
 const urlsToCache = [
   './',
   './index.html',

@@ -47,6 +47,7 @@ async function syncToFirestore() {
         console.error("Error saving document: ", e);
         // Fallback to local storage if offline or error
         localStorage.setItem('larc_schedule_participants_v1', JSON.stringify(participants));
+        throw e;
     }
 }
 
@@ -54,8 +55,13 @@ async function migrateLocalData() {
     const localData = JSON.parse(localStorage.getItem('larc_schedule_participants_v1'));
     if (localData && localData.length > 0) {
         participants = localData;
-        await syncToFirestore();
-        localStorage.removeItem('larc_schedule_participants_v1');
+        try {
+            await syncToFirestore();
+            localStorage.removeItem('larc_schedule_participants_v1');
+        } catch (e) {
+            console.error("Migration failed, keeping local storage data.");
+            renderTable();
+        }
     } else {
         renderTable();
     }
